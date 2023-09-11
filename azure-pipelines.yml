@@ -23,7 +23,7 @@ steps:
     
 - task: ArtifactoryGenericUpload@2
   inputs:
-      artifactoryService: 'jfrog-artifactory'
+      jfrogArtifactoryService: 'jfrog-artifactory'
       specSource: 'taskConfiguration'
       fileSpec: |
         {
