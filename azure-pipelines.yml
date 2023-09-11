@@ -31,7 +31,7 @@ steps:
             {
               "pattern": "*.xml",
               "target": "azure-test-generic-local/upload/"
-            },
+            }
           ]
         }
       failNoOp: true
