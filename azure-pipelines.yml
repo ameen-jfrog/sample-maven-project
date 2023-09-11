@@ -29,7 +29,7 @@ steps:
         {
           "files": [
             {
-              "pattern": "*.*",
+              "pattern": "*.xml",
               "target": "azure-test-generic-local/upload/"
             },
           ]
