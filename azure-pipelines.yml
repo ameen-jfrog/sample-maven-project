@@ -21,7 +21,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
     
-- task: ArtifactoryUpload@2
+- task: ArtifactoryGenericUpload@2
   inputs:
       artifactoryService: 'jfrog-artifactory'
       specSource: 'taskConfiguration'
