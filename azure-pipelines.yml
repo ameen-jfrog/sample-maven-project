@@ -21,17 +21,17 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
     
-- task: ArtifactoryGenericUpload@2
+- task: ArtifactoryMaven@2
   inputs:
-      jfrogArtifactoryService: 'jfrog-artifactory'
-      specSource: 'taskConfiguration'
-      fileSpec: |
-        {
-          "files": [
-            {
-              "pattern": "*.xml",
-              "target": "azure-test-generic-local/upload/"
-            }
-          ]
-        }
-      failNoOp: true
+    mavenPomFile: 'pom.xml'
+    goals: 'install'
+    artifactoryResolverService: 'jfrog-connection'
+    targetResolveReleaseRepo: 'azure-libs-release'
+    targetResolveSnapshotRepo: 'azure-libs-snapshot'
+    artifactoryDeployService: 'jfrog-connection'
+    targetDeployReleaseRepo: 'azure-libs-release-local'
+    targetDeploySnapshotRepo: 'azure-libs-snapshot-local'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    includeEnvVars: true
